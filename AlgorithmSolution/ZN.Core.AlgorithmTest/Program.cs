@@ -20,14 +20,24 @@ namespace ZN.Core.AlgorithmTest
             //int index = Foreword.Rank(1000008, whitelist);
             //watch.Stop();
             //Console.WriteLine(index + watch.Elapsed.ToString());
-            Console.WriteLine(Exercise.IntToBinaryString(16));
-            int[] array = new int[] { 3, 5, 7, 1, 5, 8, 3, 6, 3, 8, 5, 9, 10, 4 };
-            int[] result = Exercise.Histogram(array, 11);
-            Console.WriteLine(Exercise.MyStery(5, 19));
+            //Console.WriteLine(Exercise.IntToBinaryString(16));
+            //int[] array = new int[] { 3, 5, 7, 1, 5, 8, 3, 6, 3, 8, 5, 9, 10, 4 };
+            //int[] result = Exercise.Histogram(array, 11);
+            //Console.WriteLine(Exercise.MyStery(5, 19));
             //for (int i = 0; i < 100; i++)
             //    Console.WriteLine(i + "   " + Exercise.Fibonacci(i));
-            for (int i = 0; i < 100; i++)
-                Console.WriteLine(i + "   " + Exercise.FibonacciPro(i));
+            //for (int i = 0; i < 100; i++)
+            //    Console.WriteLine(i + "   " + Exercise.FibonacciPro(i));
+
+            ResizingArrayStack<int> intStack = new ResizingArrayStack<int>();
+            for (int i = 0; i < 10; i++)
+                intStack.Push(i);
+            
+            foreach (int i in intStack)
+                Console.WriteLine(i);
+            for (int i = 0; i < 10; i++)
+                Console.WriteLine(intStack.Pop());
+
             Console.ReadKey();
         }
 
