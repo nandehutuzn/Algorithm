@@ -15,7 +15,7 @@ namespace ZN.Core.AlgorithmTest
             //Console.WriteLine(Foreword.GetMaxCommonDivisor(100044, 44));
             //int[] whitelist = GetRandomArray(40000000);
             //Array.Sort(whitelist);
-            //Stopwatch watch = new Stopwatch();
+            Stopwatch watch = new Stopwatch();
             //watch.Start();
             //int index = Foreword.Rank(1000008, whitelist);
             //watch.Stop();
@@ -30,13 +30,38 @@ namespace ZN.Core.AlgorithmTest
             //    Console.WriteLine(i + "   " + Exercise.FibonacciPro(i));
 
             ResizingArrayStack<int> intStack = new ResizingArrayStack<int>();
-            for (int i = 0; i < 10; i++)
+            watch.Start();
+            for (int i = 0; i < 10000; i++)
                 intStack.Push(i);
+            watch.Stop();
+            Console.WriteLine("ResizingArrayStack time: " + watch.Elapsed);
             
-            foreach (int i in intStack)
+            //foreach (int i in intStack)
+            //    Console.WriteLine(i);
+            //for (int i = 0; i < 10; i++)
+            //    Console.WriteLine(intStack.Pop());
+
+            ZN.Core.Algorithm.SimpleBasis.Stack<int> stack = new Algorithm.SimpleBasis.Stack<int>();  //2017.7.1
+            watch.Restart();
+            for (int i = 0; i < 10000; i++)
+                stack.Push(i);
+            watch.Stop();
+            Console.WriteLine("ListStack time: " + watch.Elapsed);
+
+            //foreach (int i in stack)
+            //    Console.WriteLine(i);
+            //for (int i = 0; i < 10; i++)
+            //    Console.WriteLine(stack.Pop());
+            Console.WriteLine("------------------ListQueue-------------------");
+            ZN.Core.Algorithm.SimpleBasis.Queue<int> queue = new Algorithm.SimpleBasis.Queue<int>();
+            for (int i = 0; i < 10; i++)
+                queue.Enqueue(i);
+            foreach (int i in queue)
                 Console.WriteLine(i);
             for (int i = 0; i < 10; i++)
-                Console.WriteLine(intStack.Pop());
+                Console.WriteLine(queue.Dequeue());
+
+            ZN.Core.Algorithm.SimpleBasis.Stack<int> stackCopy = ZN.Core.Algorithm.SimpleBasis.Stack<int>.Copy(stack);
 
             Console.ReadKey();
         }
