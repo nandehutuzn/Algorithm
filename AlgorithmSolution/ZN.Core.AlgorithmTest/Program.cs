@@ -63,6 +63,22 @@ namespace ZN.Core.AlgorithmTest
 
             ZN.Core.Algorithm.SimpleBasis.Stack<int> stackCopy = ZN.Core.Algorithm.SimpleBasis.Stack<int>.Copy(stack);
 
+            Console.WriteLine("--------------------SumFast----------------------");//20170702
+            int[] a = GetRandomArray(100000);
+            watch.Restart();
+            int countTwo = (SumFast.TwoSumCount(a));
+            watch.Stop();
+            Console.WriteLine(countTwo + "  " + watch.Elapsed);
+            a = GetRandomArray(100000);
+            //watch.Restart();
+            //countTwo = (SumFast.ThreeSumCount(a));
+            //watch.Stop();
+            //Console.WriteLine(countTwo + "  " + watch.Elapsed);
+            watch.Restart();
+            countTwo = (SumFast.TwoSumCountPro(a));
+            watch.Stop();
+            Console.WriteLine(countTwo + "  " + watch.Elapsed);
+
             Console.ReadKey();
         }
 
@@ -71,7 +87,7 @@ namespace ZN.Core.AlgorithmTest
             int[] rnds = new int[length];
             Random md = new Random();
             for (int i = 0; i < length; i++)
-                rnds[i] = md.Next();
+                rnds[i] = md.Next(-9999, 9999);
 
             return rnds;
         }
