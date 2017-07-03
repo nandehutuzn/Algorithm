@@ -110,5 +110,27 @@ namespace ZN.Core.Algorithm.SimpleBasis
             }
             return b;
         }
+
+        /// <summary>
+        /// 找出数组a中最接近的一对
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static Tuple<double, int, int> SearchNearestValue(double[] a)
+        {
+            Array.Sort(a);
+            double minValue = double.MaxValue;
+            int index1 = 0;
+            for (int i = 0; i < a.Length-1; i++)
+            {
+                if (a[i + 1] - a[i] < minValue)
+                {
+                    minValue = a[i + 1] - a[i];
+                    index1 = i;
+                }
+            }
+
+            return new Tuple<double, int, int>(minValue, index1, index1 + 1);
+        }
     }
 }

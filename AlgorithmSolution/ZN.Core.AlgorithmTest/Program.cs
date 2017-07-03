@@ -79,6 +79,11 @@ namespace ZN.Core.AlgorithmTest
             watch.Stop();
             Console.WriteLine(countTwo + "  " + watch.Elapsed);
 
+            Console.WriteLine("----------------------算法分析练习------------------------");
+            double[] dou = GetDoubleRandomArray(10000);
+            var result = Exercise.SearchNearestValue(dou);
+            Console.WriteLine("最接近的值为 " + result.Item1 + " 数组中的值是 " + dou[result.Item2] + " " + dou[result.Item3]);
+
             Console.ReadKey();
         }
 
@@ -88,6 +93,16 @@ namespace ZN.Core.AlgorithmTest
             Random md = new Random();
             for (int i = 0; i < length; i++)
                 rnds[i] = md.Next(-9999, 9999);
+
+            return rnds;
+        }
+
+        private static double[] GetDoubleRandomArray(int length)
+        {
+            double[] rnds = new double[length];
+            Random md = new Random();
+            for (int i = 0; i < length; i++)
+                rnds[i] = md.NextDouble() * 10000;
 
             return rnds;
         }

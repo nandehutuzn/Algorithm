@@ -41,8 +41,10 @@ namespace ZN.Core.Algorithm.SimpleBasis
             Array.Sort(a);
             Dictionary<int, int> dic = new Dictionary<int, int>();
             for (int i = 0; i < a.Length; i++)
+            {
                 if (!dic.ContainsKey(a[i]))
-                    dic.Add(a[i], 0);
+                    dic.Add(a[i], 1);
+            }
             for (int i = 0; i < a.Length; i++)
             {
                 if (a[i] < 0 && dic.ContainsKey(-a[i]))
