@@ -84,6 +84,10 @@ namespace ZN.Core.AlgorithmTest
             var result = Exercise.SearchNearestValue(dou);
             Console.WriteLine("最接近的值为 " + result.Item1 + " 数组中的值是 " + dou[result.Item2] + " " + dou[result.Item3]);
 
+            a = GetRandomArray(10);
+            Array.Sort(a);
+            int index = Exercise.FibonacciSearch(5, a);
+
             Console.ReadKey();
         }
 
@@ -92,7 +96,7 @@ namespace ZN.Core.AlgorithmTest
             int[] rnds = new int[length];
             Random md = new Random();
             for (int i = 0; i < length; i++)
-                rnds[i] = md.Next(-9999, 9999);
+                rnds[i] = md.Next(20);
 
             return rnds;
         }

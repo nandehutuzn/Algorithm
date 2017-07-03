@@ -112,6 +112,19 @@ namespace ZN.Core.Algorithm.SimpleBasis
         }
 
         /// <summary>
+        /// 获取斐波那契数列
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static int[] GetFibonacciPro(int n)
+        {
+            int[] f = new int[n];
+            for (int i = 0; i < n; i++)
+                f[i] = (int)FibonacciPro(i);
+            return f;
+        }
+
+        /// <summary>
         /// 找出数组a中最接近的一对
         /// </summary>
         /// <param name="a"></param>
@@ -131,6 +144,77 @@ namespace ZN.Core.Algorithm.SimpleBasis
             }
 
             return new Tuple<double, int, int>(minValue, index1, index1 + 1);
+        }
+
+        /// <summary>
+        /// 斐波那契查找，运行时间  LogN
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static int FibonacciSearch(int key, int[] data)
+        {
+            int low = 0;
+            int high = data.Length - 1;
+            int mid = 0;
+
+            //斐波那契分割值下标
+            int k = 0;
+
+            //序列元素个数
+            int i = 0;
+
+            int[] f = GetFibonacciPro(20);
+
+            //获取斐波那契分割值下标
+            while (data.Length > f[k] - 1)
+                k++;
+
+            //创建临时数组
+            int[] temp = new int[f[k] - 1];
+            for (int j = 0; j < data.Length; j++)
+                temp[j] = data[j];
+
+            //序列补充至f[k]个元素
+            //补充的元素值为最后一个元素的值
+            for (i = data.Length; i < f[k] - 1; i++)
+                temp[i] = temp[high];
+
+            while (low <= high)
+            { 
+                // low :起始位置
+                //前半部分有f[k-1]个元素，由于下标从0开始
+                //则-1 获取 黄金分割位置元素的下标
+                mid = low + f[k - 1] - 1;
+
+                if (temp[mid] > key)
+                {
+                    //查找前半部分，高位指针移动
+                    high = mid - 1;
+                    //全部元素=前半部分+后半部分
+                    //f[k] = f[k-1] + f[k-1]
+                    //因为前半部分有f[k-1]个元素，所有k=k-1
+                    k = k - 1;
+                }
+                else if (temp[mid] < key)
+                {
+                    //查找后半部分  低位指针移动
+                    low = mid + 1;
+                    k = k - 2;
+                }
+                else
+                {
+                    if (mid <= high) return mid;
+                    else
+                    {
+                        // 出现这种情况是查找到补充的元素
+                        // 而补充的元素与high位置的元素一样
+                        return high;
+                    }
+                }
+            }
+
+            return -1;
         }
     }
 }
