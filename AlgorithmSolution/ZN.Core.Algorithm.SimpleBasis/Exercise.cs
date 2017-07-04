@@ -216,5 +216,23 @@ namespace ZN.Core.Algorithm.SimpleBasis
 
             return -1;
         }
+
+        /// <summary>
+        /// 两个鸡蛋，某楼层以上鸡蛋全碎，以下全不碎，找出这个楼层
+        /// （如果有无数鸡蛋，则可用二分查找法，从先从floors/2层开始，没碎再从上面一般层开始，碎了就从下面一般层开始）
+        /// </summary>
+        /// <param name="floors"></param>
+        /// <returns></returns>
+        public static int ThrowEggs(int floors)
+        {
+            //假设最少次数为x，则第一个鸡蛋从第x层扔（不管碎没碎，还有x-1次尝试机会）。
+            //如果碎了，则在1~x-1层中线性搜索索x-1次，如果没碎，则第二次从x+(x-1)层扔（现在还有x-2次尝试机会）
+            //如果这次碎了，则在x+1～x+(x-1)-1层中线性搜索，最多x-2次,如果还没碎第一个鸡蛋再从x+(x-1)+(x-2)层扔，依此类推
+            //x次尝试所能确定的最高楼层数为x+(x-1)+(x-2)+...+1=x(x+1)/2。
+            int x = 1; //最少次数
+            while ((x * (x + 1)) / 2 < floors)
+                x++;
+            return x;
+        }
     }
 }

@@ -88,6 +88,8 @@ namespace ZN.Core.AlgorithmTest
             Array.Sort(a);
             int index = Exercise.FibonacciSearch(5, a);
 
+            countTwo = Exercise.ThrowEggs(200);
+
             Console.ReadKey();
         }
 
