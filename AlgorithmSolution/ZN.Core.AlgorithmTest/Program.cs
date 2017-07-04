@@ -90,6 +90,21 @@ namespace ZN.Core.AlgorithmTest
 
             countTwo = Exercise.ThrowEggs(200);
 
+            QuickFind_UF quickUF = new QuickFind_UF(10);//20170704
+            quickUF.Union(1, 3);
+            quickUF.Union(2, 3);
+            bool ret = quickUF.Connected(1, 2); //true
+
+            QuickUnion_UF quickUnion = new QuickUnion_UF(10);
+            quickUnion.Union(2, 3);
+            quickUnion.Union(2, 4);
+            ret = quickUnion.Connected(3, 4); //true
+
+            WeightedQuickUnion_UF weight = new WeightedQuickUnion_UF(10);
+            weight.Union(2, 3);
+            weight.Union(2, 4);
+            ret = weight.Connected(3, 4); //true
+
             Console.ReadKey();
         }
 
