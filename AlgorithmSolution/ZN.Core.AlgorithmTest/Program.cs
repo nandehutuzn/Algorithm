@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using ZN.Core.Algorithm.SimpleBasis;
+using ZN.Core.Algorithm.Sort;
 
 namespace ZN.Core.AlgorithmTest
 {
@@ -12,6 +13,9 @@ namespace ZN.Core.AlgorithmTest
     {
         static void Main(string[] args)
         {
+            #region
+            /*
+            
             //Console.WriteLine(Foreword.GetMaxCommonDivisor(100044, 44));
             //int[] whitelist = GetRandomArray(40000000);
             //Array.Sort(whitelist);
@@ -104,6 +108,21 @@ namespace ZN.Core.AlgorithmTest
             weight.Union(2, 3);
             weight.Union(2, 4);
             ret = weight.Connected(3, 4); //true
+            
+            */
+            #endregion
+
+            IComparable[] array = GetRandomIComparableArray(10000);//20170705
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            new Selection().Sort(array);
+            watch.Stop();
+            Console.WriteLine("选择排序法：" + watch.Elapsed);
+            array = GetRandomIComparableArray(10000);
+            watch.Restart();
+            new Insertion().SortPro(array);
+            watch.Stop();
+            Console.WriteLine("插入排序法：" + watch.Elapsed);
 
             Console.ReadKey();
         }
@@ -113,7 +132,17 @@ namespace ZN.Core.AlgorithmTest
             int[] rnds = new int[length];
             Random md = new Random();
             for (int i = 0; i < length; i++)
-                rnds[i] = md.Next(20);
+                rnds[i] = md.Next();
+
+            return rnds;
+        }
+
+        private static IComparable[] GetRandomIComparableArray(int length)
+        {
+            IComparable[] rnds = new IComparable[length];
+            Random rd = new Random((int)(DateTime.Now.Ticks & 0xfffffffL) | (int)(DateTime.Now.Ticks >> 32));
+            for (int i = 0; i < length; i++)
+                rnds[i] = rd.Next();
 
             return rnds;
         }

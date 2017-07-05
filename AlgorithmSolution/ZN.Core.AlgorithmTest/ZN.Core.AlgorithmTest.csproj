@@ -52,6 +52,10 @@
       <Project>{edda9f29-f518-4146-b6b8-7b3a28d892ed}</Project>
       <Name>ZN.Core.Algorithm.SimpleBasis</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ZN.Core.Algorithm.Sort\ZN.Core.Algorithm.Sort.csproj">
+      <Project>{ec21e7dc-eb00-42c9-9de9-f7e320662ac1}</Project>
+      <Name>ZN.Core.Algorithm.Sort</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
