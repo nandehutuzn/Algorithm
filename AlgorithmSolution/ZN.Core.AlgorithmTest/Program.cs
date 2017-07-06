@@ -112,19 +112,52 @@ namespace ZN.Core.AlgorithmTest
             */
             #endregion
 
-            IComparable[] array = GetRandomIComparableArray(10000);//20170705
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            new Selection().Sort(array);
-            watch.Stop();
-            Console.WriteLine("选择排序法：" + watch.Elapsed);
-            array = GetRandomIComparableArray(10000);
-            watch.Restart();
-            new Insertion().SortPro(array);
-            watch.Stop();
-            Console.WriteLine("插入排序法：" + watch.Elapsed);
+            int length = 10000000;
+
+            Parallel.Invoke(
+                () => Sort("Selection", length),
+                () => Sort("Insertion", length),
+                () => Sort("InsertionPro", length),
+                () => Sort("Shell", length));
 
             Console.ReadKey();
+        }
+
+        private static void Sort(string name, int length)
+        {
+            IComparable[] array;
+            Stopwatch watch = new Stopwatch();
+            switch (name)
+            {
+                case "Selection":
+                    array = new Program().GetRandomIComparableArray(length);//20170705
+                    watch.Start();
+                    new Selection().Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("选择排序法：" + watch.Elapsed);
+                    break;
+                case "Insertion":
+                    array = new Program().GetRandomIComparableArray(length);
+                    watch.Start();
+                    new Insertion().Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("插入排序法：" + watch.Elapsed);
+                    break;
+                case "InsertionPro":
+                    //array = new Program().GetRandomIComparableArray(length);
+                    //watch.Start();
+                    //new Insertion().SortPro(array);
+                    //watch.Stop();
+                    //Console.WriteLine("插入排序改进版法：" + watch.Elapsed);
+                    break;
+                case "Shell":
+                    array = new Program().GetRandomIComparableArray(length);
+                    watch.Start();
+                    new Shell().Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("希尔排序法：" + watch.Elapsed);
+                    break;
+            }
         }
 
         private static int[] GetRandomArray(int length)
@@ -137,14 +170,23 @@ namespace ZN.Core.AlgorithmTest
             return rnds;
         }
 
-        private static IComparable[] GetRandomIComparableArray(int length)
+        private IComparable[] GetRandomIComparableArray(int length)
         {
             IComparable[] rnds = new IComparable[length];
-            Random rd = new Random((int)(DateTime.Now.Ticks & 0xfffffffL) | (int)(DateTime.Now.Ticks >> 32));
-            for (int i = 0; i < length; i++)
-                rnds[i] = rd.Next();
+            //Random rd = new Random((int)(DateTime.Now.Ticks & 0xfffffffL) | (int)(DateTime.Now.Ticks >> 32));
+            //for (int i = 0; i < length; i++)
+            //    rnds[i] = rd.Next();
 
-            return rnds;
+            Random rnd = new Random();
+            byte[] keys = new byte[length];
+            rnd.NextBytes(keys);
+            for (int i = 0; i < length; i++)
+                rnds[i] = i;
+
+            IComparable[] result = new IComparable[length];
+            Array.Sort(keys, rnds);
+            Array.Copy(rnds, result, length);
+            return result;
         }
 
         private static double[] GetDoubleRandomArray(int length)
