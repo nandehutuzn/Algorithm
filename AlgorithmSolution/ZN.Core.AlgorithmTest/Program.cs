@@ -112,13 +112,22 @@ namespace ZN.Core.AlgorithmTest
             */
             #endregion
 
-            int length = 10000000;
+            int length = 100000;
 
             Parallel.Invoke(
                 () => Sort("Selection", length),
                 () => Sort("Insertion", length),
                 () => Sort("InsertionPro", length),
-                () => Sort("Shell", length));
+                () => Sort("Shell", length),
+                () => Sort("Merge", length),
+                () => Sort("MergeBU", length));
+
+            //Task.Factory.StartNew(() => Sort("Selection", length));
+            //Task.Factory.StartNew(() => Sort("Insertion", length));
+            //Task.Factory.StartNew(() => Sort("InsertionPro", length));
+            //Task.Factory.StartNew(() => Sort("Shell", length));
+            //Task.Factory.StartNew(() => Sort("Merge", length));
+            //Task.Factory.StartNew(() => Sort("MergeBU", length));
 
             Console.ReadKey();
         }
@@ -127,21 +136,24 @@ namespace ZN.Core.AlgorithmTest
         {
             IComparable[] array;
             Stopwatch watch = new Stopwatch();
+            Example sorter;
             switch (name)
             {
                 case "Selection":
                     array = new Program().GetRandomIComparableArray(length);//20170705
+                    sorter = new Selection();
                     watch.Start();
-                    new Selection().Sort(array);
+                    sorter.Sort(array);
                     watch.Stop();
-                    Console.WriteLine("选择排序法：" + watch.Elapsed);
+                    Console.WriteLine("选择排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
                     break;
                 case "Insertion":
                     array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Selection();
                     watch.Start();
-                    new Insertion().Sort(array);
+                    sorter.Sort(array);
                     watch.Stop();
-                    Console.WriteLine("插入排序法：" + watch.Elapsed);
+                    Console.WriteLine("插入排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
                     break;
                 case "InsertionPro":
                     //array = new Program().GetRandomIComparableArray(length);
@@ -152,10 +164,27 @@ namespace ZN.Core.AlgorithmTest
                     break;
                 case "Shell":
                     array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Shell();
                     watch.Start();
-                    new Shell().Sort(array);
+                    sorter.Sort(array);
                     watch.Stop();
-                    Console.WriteLine("希尔排序法：" + watch.Elapsed);
+                    Console.WriteLine("希尔排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
+                    break;
+                case "Merge":
+                    array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Merge();
+                    watch.Start();
+                    sorter.Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("归并（自顶向下）排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
+                    break;
+                case "MergeBU":
+                    array = new Program().GetRandomIComparableArray(length);
+                    sorter = new MergeBU();
+                    watch.Start();
+                    sorter.Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("归并（自底向上）排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
                     break;
             }
         }

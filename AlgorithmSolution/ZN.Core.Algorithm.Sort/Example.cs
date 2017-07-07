@@ -41,7 +41,7 @@ namespace ZN.Core.Algorithm.Sort
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static bool IsSorted(IComparable[] a)
+        public bool IsSorted(IComparable[] a)
         {
             for (int i = 1; i < a.Length; i++)
                 if (Less(a[i], a[i - 1])) return false;
