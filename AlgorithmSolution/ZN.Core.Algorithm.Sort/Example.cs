@@ -20,9 +20,11 @@ namespace ZN.Core.Algorithm.Sort
 
         public static void Exch(IComparable[] a, int i, int j)
         {
+
             IComparable t = a[i];
             a[i] = a[j];
             a[j] = t;
+
         }
 
         /// <summary>

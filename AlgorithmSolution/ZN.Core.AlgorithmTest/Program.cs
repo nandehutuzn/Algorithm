@@ -114,13 +114,20 @@ namespace ZN.Core.AlgorithmTest
 
             int length = 100000;
 
+            //优先队列   用于插入元素和删除最大元素  20170708
+            //var array = new Program().GetRandomIComparableArray(length);
+            //var max = new MaxPQ<IComparable>(array).DelMax();
+
             Parallel.Invoke(
                 () => Sort("Selection", length),
                 () => Sort("Insertion", length),
                 () => Sort("InsertionPro", length),
                 () => Sort("Shell", length),
                 () => Sort("Merge", length),
-                () => Sort("MergeBU", length));
+                () => Sort("MergeBU", length),
+                () => Sort("Quick", length),
+                () => Sort("Quick3Way", length),
+                () => Sort("Heap", length));
 
             //Task.Factory.StartNew(() => Sort("Selection", length));
             //Task.Factory.StartNew(() => Sort("Insertion", length));
@@ -185,6 +192,30 @@ namespace ZN.Core.AlgorithmTest
                     sorter.Sort(array);
                     watch.Stop();
                     Console.WriteLine("归并（自底向上）排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
+                    break;
+                case "Quick":
+                    array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Quick();
+                    watch.Start();
+                    sorter.Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("快速排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
+                    break;
+                case "Quick3Way":
+                    array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Quick3Way();
+                    watch.Start();
+                    sorter.Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("快速排序法（三向切分）：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
+                    break;
+                case "Heap":
+                    array = new Program().GetRandomIComparableArray(length);
+                    sorter = new Heap();
+                    watch.Start();
+                    sorter.Sort(array);
+                    watch.Stop();
+                    Console.WriteLine("堆排序法：" + watch.Elapsed + "  结果是否有序 " + sorter.IsSorted(array));
                     break;
             }
         }
