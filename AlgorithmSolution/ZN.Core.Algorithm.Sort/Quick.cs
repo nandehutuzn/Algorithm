@@ -35,16 +35,16 @@ namespace ZN.Core.Algorithm.Sort
         private int Partition(IComparable[] a, int lo, int hi)
         {//将数组切分为a[lo...i-1], a[i],  a[i+1...hi]
             int i = lo, j = hi + 1;  //左右扫描指针
-            IComparable v = a[lo];  //切分元素
+            IComparable v = a[lo];  //切分元素   切分元素是固定的，找出该元素在数组中的准确位置，做为返回值
             while (true)
             {  //扫描左右，检查扫描是否结束并交换元素
-                while (Less(a[++i], v))
+                while (Less(a[++i], v))  // 保证a[lo...i-1]都比 v 小
                 {
                     if (i == hi)
                         break;
                 }
 
-                while (Less(v, a[--j]))
+                while (Less(v, a[--j])) // 保证a[i+1 ...hi]中都比 v  da
                 {
                     if (j == lo)
                         break;
@@ -52,7 +52,7 @@ namespace ZN.Core.Algorithm.Sort
 
                 if (i >= j)
                     break;
-                Exch(a, i, j);
+                Exch(a, i, j);//交换a[lo...i-1]中第一个大于 v  和 a[i+1...hi]中第一个小于 v  的元素
             }
 
             Exch(a, lo, j);//将v=a[j] 放入正确的位置

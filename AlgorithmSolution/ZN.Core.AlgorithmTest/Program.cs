@@ -112,7 +112,7 @@ namespace ZN.Core.AlgorithmTest
             */
             #endregion
 
-            int length = 100000;
+            int length = 1000000;
 
             //优先队列   用于插入元素和删除最大元素  20170708
             //var array = new Program().GetRandomIComparableArray(length);
