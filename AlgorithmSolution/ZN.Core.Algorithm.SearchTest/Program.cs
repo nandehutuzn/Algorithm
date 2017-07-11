@@ -19,6 +19,14 @@ namespace ZN.Core.Algorithm.SearchTest
             st.Delete("a");
             size = st.Size();
 
+            SortedST<string, string> sortedSt;
+            sortedSt = new BST<string, string>();
+            sortedSt.Put("r", "1");
+            sortedSt.Put("b", "2");
+            sortedSt.Put("h", "3");
+            sortedSt.Put("t", "4");
+            sortedSt.Delete("b");
+
             Console.ReadKey();
         }
     }

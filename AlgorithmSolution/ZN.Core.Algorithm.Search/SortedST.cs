@@ -104,7 +104,7 @@ namespace ZN.Core.Algorithm.Search
         /// <summary>
         /// 删除最小的键
         /// </summary>
-        public void DeleteMin()
+        public virtual void DeleteMin()
         {
             Delete(Min());
         }
@@ -112,7 +112,7 @@ namespace ZN.Core.Algorithm.Search
         /// <summary>
         /// 删除最大的键
         /// </summary>
-        public void DeleteMax()
+        public virtual void DeleteMax()
         {
             Delete(Max());
         }
@@ -146,7 +146,7 @@ namespace ZN.Core.Algorithm.Search
         /// 表中的所有键的集合，已排序
         /// </summary>
         /// <returns></returns>
-        public Key[] Keys()
+        public virtual Key[] Keys()
         {
             return Keys(Min(), Max());
         }

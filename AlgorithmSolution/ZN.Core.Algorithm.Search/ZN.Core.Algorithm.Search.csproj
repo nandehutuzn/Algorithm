@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySearchST.cs" />
+    <Compile Include="BST.cs" />
     <Compile Include="SequentialSearchST.cs" />
     <Compile Include="SortedST.cs" />
     <Compile Include="ST.cs" />
