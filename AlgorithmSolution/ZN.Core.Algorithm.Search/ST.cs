@@ -32,7 +32,7 @@ namespace ZN.Core.Algorithm.Search
         /// 从表中删去键Key（及其对应的值）
         /// </summary>
         /// <param name="key"></param>
-        public void Delete(Key key)
+        public virtual void Delete(Key key)
         {
             Put(key, default(Value));
         }

@@ -27,6 +27,22 @@ namespace ZN.Core.Algorithm.SearchTest
             sortedSt.Put("t", "4");
             sortedSt.Delete("b");
 
+            st = new SeparateChainingHashST<string, string>();
+            st.Put("f", "1");
+            st.Put("a", "3");
+            st.Put("d", "4");
+            st.Put("h", "9");
+            st.Put("k", "8");
+            var v = st.Get("h");
+
+            st = new LinearProbingHashST<string, string>();
+            st.Put("f", "1");
+            st.Put("a", "3");
+            st.Put("d", "4");
+            st.Put("h", "9");
+            st.Put("u", "8");
+            v = st.Get("u");
+
             Console.ReadKey();
         }
     }

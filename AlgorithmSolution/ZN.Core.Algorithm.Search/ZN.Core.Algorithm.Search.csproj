@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="BinarySearchST.cs" />
     <Compile Include="BST.cs" />
+    <Compile Include="LinearProbingHashST.cs" />
+    <Compile Include="SeparateChainingHashST.cs" />
     <Compile Include="SequentialSearchST.cs" />
     <Compile Include="SortedST.cs" />
     <Compile Include="ST.cs" />
