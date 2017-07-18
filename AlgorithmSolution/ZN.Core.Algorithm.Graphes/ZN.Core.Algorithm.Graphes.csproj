@@ -40,11 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BreadthFirstPaths.cs" />
+    <Compile Include="DepthFirstOrder.cs" />
     <Compile Include="DepthFirstPaths.cs" />
     <Compile Include="DepthFirstSearch.cs" />
+    <Compile Include="Digraph.cs" />
+    <Compile Include="DirectedCycle.cs" />
+    <Compile Include="DirectedDFS.cs" />
     <Compile Include="Graph.cs" />
+    <Compile Include="KosarajuSCC.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Topological.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZN.Core.Algorithm.SimpleBasis\ZN.Core.Algorithm.SimpleBasis.csproj">
