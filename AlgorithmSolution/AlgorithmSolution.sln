@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZN.Core.Algorithm.Graphes",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZN.Core.Algorithm.GraphesTest", "ZN.Core.Algorithm.GraphesTest\ZN.Core.Algorithm.GraphesTest.csproj", "{71D5A1D5-A3B8-4E6B-A7CD-84E5052291A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZN.Core.Algorithm.String", "ZN.Core.Algorithm.String\ZN.Core.Algorithm.String.csproj", "{87BAF06D-0D7D-468D-A63C-7F2B0BA6A6ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZN.Core.Algorithm.StringTest", "ZN.Core.Algorithm.StringTest\ZN.Core.Algorithm.StringTest.csproj", "{E3CC5C34-DACA-4E6B-92BB-D3D7CB15B089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{71D5A1D5-A3B8-4E6B-A7CD-84E5052291A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71D5A1D5-A3B8-4E6B-A7CD-84E5052291A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71D5A1D5-A3B8-4E6B-A7CD-84E5052291A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BAF06D-0D7D-468D-A63C-7F2B0BA6A6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BAF06D-0D7D-468D-A63C-7F2B0BA6A6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BAF06D-0D7D-468D-A63C-7F2B0BA6A6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BAF06D-0D7D-468D-A63C-7F2B0BA6A6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CC5C34-DACA-4E6B-92BB-D3D7CB15B089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CC5C34-DACA-4E6B-92BB-D3D7CB15B089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CC5C34-DACA-4E6B-92BB-D3D7CB15B089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CC5C34-DACA-4E6B-92BB-D3D7CB15B089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
