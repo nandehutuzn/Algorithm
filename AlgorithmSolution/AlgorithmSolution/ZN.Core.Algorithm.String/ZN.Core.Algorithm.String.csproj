@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alphabet.cs" />
+    <Compile Include="ForceSearch.cs" />
+    <Compile Include="KMPSearch.cs" />
     <Compile Include="LSD.cs" />
     <Compile Include="MSD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

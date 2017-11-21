@@ -16,6 +16,11 @@ namespace ZN.Core.Algorithm.StringTest
             //LSD.Sort(a, 3);
             MSD.Sort(b);
 
+            int i= ForceSearch.Search1("ll", "hello");
+
+            KMPSearch kmp = new KMPSearch("llo");
+            i = kmp.Search("hello");
+
             Console.ReadKey();
         }
     }
